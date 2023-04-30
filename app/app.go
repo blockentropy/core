@@ -146,6 +146,10 @@ import (
 	alliancekeeper "github.com/terra-money/alliance/x/alliance/keeper"
 	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
 
+	mlmodule "github.com/terra-money/core/v2/x/ml"
+	mlmodulekeeper "github.com/terra-money/core/v2/x/ml/keeper"
+	mlmoduletypes "github.com/terra-money/core/v2/x/ml/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	tmjson "github.com/tendermint/tendermint/libs/json"
@@ -257,6 +261,7 @@ var (
 		ibchooks.AppModuleBasic{},
 		wasm.AppModuleBasic{},
 		alliance.AppModuleBasic{},
+		mlmodule.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -275,6 +280,7 @@ var (
 		tokenfactorytypes.ModuleName:  {authtypes.Burner, authtypes.Minter},
 		alliancetypes.ModuleName:      {authtypes.Burner, authtypes.Minter},
 		alliancetypes.RewardsPoolName: nil,
+		mlmoduletypes.ModuleName:      {authtypes.Minter, authtypes.Burner, authtypes.Staking},
 	}
 )
 
@@ -332,6 +338,7 @@ type TerraApp struct {
 	RouterKeeper        routerkeeper.Keeper
 	TokenFactoryKeeper  tokenfactorykeeper.Keeper
 	AllianceKeeper      alliancekeeper.Keeper
+	MlKeeper            mlmodulekeeper.Keeper
 
 	// IBC hooks
 	IBCHooksKeeper   *ibchookskeeper.Keeper
@@ -387,7 +394,7 @@ func NewTerraApp(
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
 		intertxtypes.StoreKey, authzkeeper.StoreKey, feegrant.StoreKey, icahosttypes.StoreKey,
 		icacontrollertypes.StoreKey, routertypes.StoreKey, tokenfactorytypes.StoreKey, wasm.StoreKey,
-		ibcfeetypes.StoreKey, ibchookstypes.StoreKey, alliancetypes.StoreKey,
+		ibcfeetypes.StoreKey, ibchookstypes.StoreKey, alliancetypes.StoreKey, mlmoduletypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
@@ -512,6 +519,17 @@ func NewTerraApp(
 		scopedTransferKeeper,
 	)
 	transferIBCModule := ibctransfer.NewIBCModule(app.TransferKeeper)
+
+	app.MlKeeper = *mlmodulekeeper.NewKeeper(
+		appCodec,
+		keys[mlmoduletypes.StoreKey],
+		keys[mlmoduletypes.MemStoreKey],
+		app.GetSubspace(mlmoduletypes.ModuleName),
+
+		app.StakingKeeper,
+		app.BankKeeper,
+	)
+	mlModule := mlmodule.NewAppModule(appCodec, app.MlKeeper, app.AccountKeeper, app.BankKeeper)
 
 	// Configure the hooks keeper
 	hooksKeeper := ibchookskeeper.NewKeeper(
@@ -677,6 +695,7 @@ func NewTerraApp(
 		intertx.NewAppModule(appCodec, app.InterTxKeeper),
 		router.NewAppModule(&app.RouterKeeper),
 		// this line is used by starport scaffolding # stargate/app/appModule
+		mlModule,
 		wasm.NewAppModule(appCodec, &app.wasmKeeper, app.StakingKeeper, app.AccountKeeper, app.BankKeeper),
 		ibchooks.NewAppModule(app.AccountKeeper),
 		tokenfactory.NewAppModule(app.TokenFactoryKeeper, app.AccountKeeper, app.BankKeeper),
@@ -715,6 +734,7 @@ func NewTerraApp(
 		wasm.ModuleName,
 		tokenfactorytypes.ModuleName,
 		alliancetypes.ModuleName,
+		mlmoduletypes.ModuleName,
 	)
 
 	app.mm.SetOrderEndBlockers(
@@ -745,6 +765,7 @@ func NewTerraApp(
 		wasm.ModuleName,
 		tokenfactorytypes.ModuleName,
 		alliancetypes.ModuleName,
+		mlmoduletypes.ModuleName,
 	)
 
 	// NOTE: The genutils module must occur after staking so that pools are
@@ -780,6 +801,7 @@ func NewTerraApp(
 		ibchookstypes.ModuleName,
 		wasm.ModuleName,
 		alliancetypes.ModuleName,
+		mlmoduletypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -1048,6 +1070,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(tokenfactorytypes.ModuleName)
 	paramsKeeper.Subspace(icacontrollertypes.SubModuleName)
 	paramsKeeper.Subspace(alliancetypes.ModuleName)
+	paramsKeeper.Subspace(mlmoduletypes.ModuleName)
 
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
 	paramsKeeper.Subspace(wasm.ModuleName)
@@ -1154,6 +1177,7 @@ func (app *TerraApp) SimulationManager() *module.SimulationManager {
 		wasm.NewAppModule(appCodec, &app.wasmKeeper, app.StakingKeeper, app.AccountKeeper, app.BankKeeper),
 		tokenfactory.NewAppModule(app.TokenFactoryKeeper, app.AccountKeeper, app.BankKeeper),
 		alliance.NewAppModule(appCodec, app.AllianceKeeper, app.StakingKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
+		mlmodule.NewAppModule(appCodec, app.MlKeeper, app.AccountKeeper, app.BankKeeper),
 		// does not implement simulation
 		// intertx.NewAppModule(appCodec, app.InterTxKeeper),
 		// ibchooks.NewAppModule(app.AccountKeeper),

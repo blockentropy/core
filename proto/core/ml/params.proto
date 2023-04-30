@@ -1,0 +1,12 @@
+syntax = "proto3";
+package core.v2.ml;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/terra-money/core/v2/x/ml/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}
