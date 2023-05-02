@@ -9,7 +9,7 @@ const TypeMsgConditional = "conditional"
 
 var _ sdk.Msg = &MsgConditional{}
 
-func NewMsgConditional(creator string, modality string, model string, ctrlmodel string, ctrlinput string, prompt string, negprompt string, seed string, machine string) *MsgConditional {
+func NewMsgConditional(creator string, modality string, model string, ctrlmodel string, ctrlinput string, prompt string, negprompt string, seed string, machine string, endpoint string) *MsgConditional {
 	return &MsgConditional{
 		Creator:   creator,
 		Modality:  modality,
@@ -20,6 +20,7 @@ func NewMsgConditional(creator string, modality string, model string, ctrlmodel 
 		Negprompt: negprompt,
 		Seed:      seed,
 		Machine:   machine,
+		Endpoint:  endpoint,
 	}
 }
 

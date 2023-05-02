@@ -12,36 +12,30 @@ import (
 
 var _ = strconv.Itoa(0)
 
-func CmdConditional() *cobra.Command {
+func CmdLlm() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "conditional [modality] [model] [ctrlmodel] [ctrlinput] [prompt] [negprompt] [seed] [machine] [endpoint]",
-		Short: "Broadcast message conditional",
-		Args:  cobra.ExactArgs(9),
+		Use:   "llm [modality] [model] [prompt] [context] [machine] [endpoint]",
+		Short: "Broadcast message llm",
+		Args:  cobra.ExactArgs(6),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argModality := args[0]
 			argModel := args[1]
-			argCtrlmodel := args[2]
-			argCtrlinput := args[3]
-			argPrompt := args[4]
-			argNegprompt := args[5]
-			argSeed := args[6]
-			argMachine := args[7]
-			argEndpoint := args[8]
+			argPrompt := args[2]
+			argContext := args[3]
+			argMachine := args[4]
+			argEndpoint := args[5]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgConditional(
+			msg := types.NewMsgLlm(
 				clientCtx.GetFromAddress().String(),
 				argModality,
 				argModel,
-				argCtrlmodel,
-				argCtrlinput,
 				argPrompt,
-				argNegprompt,
-				argSeed,
+				argContext,
 				argMachine,
 				argEndpoint,
 			)

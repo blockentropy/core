@@ -9,7 +9,7 @@ const TypeMsgGenerate = "generate"
 
 var _ sdk.Msg = &MsgGenerate{}
 
-func NewMsgGenerate(creator string, modality string, model string, prompt string, negprompt string, seed string, machine string) *MsgGenerate {
+func NewMsgGenerate(creator string, modality string, model string, prompt string, negprompt string, seed string, machine string, endpoint string) *MsgGenerate {
 	return &MsgGenerate{
 		Creator:   creator,
 		Modality:  modality,
@@ -18,6 +18,7 @@ func NewMsgGenerate(creator string, modality string, model string, prompt string
 		Negprompt: negprompt,
 		Seed:      seed,
 		Machine:   machine,
+		Endpoint:  endpoint,
 	}
 }
 

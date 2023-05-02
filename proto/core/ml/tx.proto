@@ -9,6 +9,7 @@ option go_package = "github.com/terra-money/core/v2/x/ml/types";
 service Msg {
       rpc Generate(MsgGenerate) returns (MsgGenerateResponse);
   rpc Conditional(MsgConditional) returns (MsgConditionalResponse);
+  rpc Llm(MsgLlm) returns (MsgLlmResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -20,6 +21,7 @@ message MsgGenerate {
   string negprompt = 5;
   string seed = 6;
   string machine = 7;
+  string endpoint = 8;
 }
 
 message MsgGenerateResponse {
@@ -35,9 +37,23 @@ message MsgConditional {
   string negprompt = 7;
   string seed = 8;
   string machine = 9;
+  string endpoint = 10;
 }
 
 message MsgConditionalResponse {
+}
+
+message MsgLlm {
+  string creator = 1;
+  string modality = 2;
+  string model = 3;
+  string prompt = 4;
+  string context = 5;
+  string machine = 6;
+  string endpoint = 7;
+}
+
+message MsgLlmResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

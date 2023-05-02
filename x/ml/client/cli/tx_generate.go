@@ -14,9 +14,9 @@ var _ = strconv.Itoa(0)
 
 func CmdGenerate() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "generate [modality] [model] [prompt] [negprompt] [seed] [machine]",
+		Use:   "generate [modality] [model] [prompt] [negprompt] [seed] [machine] [endpoint]",
 		Short: "Broadcast message generate",
-		Args:  cobra.ExactArgs(6),
+		Args:  cobra.ExactArgs(7),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argModality := args[0]
 			argModel := args[1]
@@ -24,6 +24,7 @@ func CmdGenerate() *cobra.Command {
 			argNegprompt := args[3]
 			argSeed := args[4]
 			argMachine := args[5]
+			argEndpoint := args[6]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -38,6 +39,7 @@ func CmdGenerate() *cobra.Command {
 				argNegprompt,
 				argSeed,
 				argMachine,
+				argEndpoint,
 			)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
