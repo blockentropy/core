@@ -155,33 +155,184 @@ func (m *MsgGenerateResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgGenerateResponse proto.InternalMessageInfo
 
+type MsgConditional struct {
+	Creator   string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Modality  string `protobuf:"bytes,2,opt,name=modality,proto3" json:"modality,omitempty"`
+	Model     string `protobuf:"bytes,3,opt,name=model,proto3" json:"model,omitempty"`
+	Ctrlmodel string `protobuf:"bytes,4,opt,name=ctrlmodel,proto3" json:"ctrlmodel,omitempty"`
+	Ctrlinput string `protobuf:"bytes,5,opt,name=ctrlinput,proto3" json:"ctrlinput,omitempty"`
+	Prompt    string `protobuf:"bytes,6,opt,name=prompt,proto3" json:"prompt,omitempty"`
+	Negprompt string `protobuf:"bytes,7,opt,name=negprompt,proto3" json:"negprompt,omitempty"`
+	Seed      string `protobuf:"bytes,8,opt,name=seed,proto3" json:"seed,omitempty"`
+	Machine   string `protobuf:"bytes,9,opt,name=machine,proto3" json:"machine,omitempty"`
+}
+
+func (m *MsgConditional) Reset()         { *m = MsgConditional{} }
+func (m *MsgConditional) String() string { return proto.CompactTextString(m) }
+func (*MsgConditional) ProtoMessage()    {}
+func (*MsgConditional) Descriptor() ([]byte, []int) {
+	return fileDescriptor_551af7a8af74ae2d, []int{2}
+}
+func (m *MsgConditional) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgConditional) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgConditional.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgConditional) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgConditional.Merge(m, src)
+}
+func (m *MsgConditional) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgConditional) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgConditional.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgConditional proto.InternalMessageInfo
+
+func (m *MsgConditional) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetModality() string {
+	if m != nil {
+		return m.Modality
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetModel() string {
+	if m != nil {
+		return m.Model
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetCtrlmodel() string {
+	if m != nil {
+		return m.Ctrlmodel
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetCtrlinput() string {
+	if m != nil {
+		return m.Ctrlinput
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetPrompt() string {
+	if m != nil {
+		return m.Prompt
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetNegprompt() string {
+	if m != nil {
+		return m.Negprompt
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetSeed() string {
+	if m != nil {
+		return m.Seed
+	}
+	return ""
+}
+
+func (m *MsgConditional) GetMachine() string {
+	if m != nil {
+		return m.Machine
+	}
+	return ""
+}
+
+type MsgConditionalResponse struct {
+}
+
+func (m *MsgConditionalResponse) Reset()         { *m = MsgConditionalResponse{} }
+func (m *MsgConditionalResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgConditionalResponse) ProtoMessage()    {}
+func (*MsgConditionalResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_551af7a8af74ae2d, []int{3}
+}
+func (m *MsgConditionalResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgConditionalResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgConditionalResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgConditionalResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgConditionalResponse.Merge(m, src)
+}
+func (m *MsgConditionalResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgConditionalResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgConditionalResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgConditionalResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgGenerate)(nil), "core.v2.ml.MsgGenerate")
 	proto.RegisterType((*MsgGenerateResponse)(nil), "core.v2.ml.MsgGenerateResponse")
+	proto.RegisterType((*MsgConditional)(nil), "core.v2.ml.MsgConditional")
+	proto.RegisterType((*MsgConditionalResponse)(nil), "core.v2.ml.MsgConditionalResponse")
 }
 
 func init() { proto.RegisterFile("core/ml/tx.proto", fileDescriptor_551af7a8af74ae2d) }
 
 var fileDescriptor_551af7a8af74ae2d = []byte{
-	// 283 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x90, 0xbd, 0x4e, 0xc3, 0x30,
-	0x14, 0x85, 0x63, 0xda, 0xa6, 0xed, 0x65, 0x41, 0xe6, 0xcf, 0xaa, 0x90, 0x41, 0x9d, 0x60, 0xc0,
-	0x91, 0xc2, 0x1b, 0x00, 0x12, 0x03, 0xea, 0xd2, 0x91, 0x2d, 0x4d, 0xae, 0xd2, 0x48, 0x71, 0x1c,
-	0xd9, 0xa6, 0x6a, 0xde, 0x82, 0x17, 0x62, 0x67, 0xec, 0xc8, 0x88, 0x92, 0x17, 0x41, 0x75, 0xd3,
-	0x9f, 0xa5, 0x5b, 0xbe, 0xf3, 0x29, 0xd6, 0xb9, 0x07, 0xce, 0x62, 0xa5, 0x31, 0x90, 0x79, 0x60,
-	0x97, 0xa2, 0xd4, 0xca, 0x2a, 0x0a, 0xeb, 0x44, 0x2c, 0x42, 0x21, 0xf3, 0xf1, 0x37, 0x81, 0xd3,
-	0x89, 0x49, 0xdf, 0xb0, 0x40, 0x1d, 0x59, 0xa4, 0x0c, 0xfa, 0xb1, 0xc6, 0xc8, 0x2a, 0xcd, 0xc8,
-	0x1d, 0xb9, 0x1f, 0x4e, 0xb7, 0x48, 0x47, 0x30, 0x90, 0x2a, 0x89, 0xf2, 0xcc, 0x56, 0xec, 0xc4,
-	0xa9, 0x1d, 0xd3, 0x0b, 0xe8, 0x49, 0x95, 0x60, 0xce, 0x3a, 0x4e, 0x6c, 0x80, 0x5e, 0x81, 0x5f,
-	0x6a, 0x25, 0x4b, 0xcb, 0xba, 0x2e, 0x6e, 0x89, 0xde, 0xc0, 0xb0, 0xc0, 0xb4, 0x55, 0x3d, 0xa7,
-	0xf6, 0x01, 0xa5, 0xd0, 0x35, 0x88, 0x09, 0xf3, 0x9d, 0x70, 0xdf, 0xeb, 0x56, 0x32, 0x8a, 0xe7,
-	0x59, 0x81, 0xac, 0xbf, 0x69, 0xd5, 0xe2, 0xf8, 0x12, 0xce, 0x0f, 0xea, 0x4f, 0xd1, 0x94, 0xaa,
-	0x30, 0x18, 0xbe, 0x43, 0x67, 0x62, 0x52, 0xfa, 0x0a, 0x83, 0xdd, 0x65, 0xd7, 0x62, 0x7f, 0xb6,
-	0x38, 0xf8, 0x67, 0x74, 0x7b, 0x44, 0x6c, 0x1f, 0x7b, 0x7e, 0xf9, 0xa9, 0x39, 0x59, 0xd5, 0x9c,
-	0xfc, 0xd5, 0x9c, 0x7c, 0x35, 0xdc, 0x5b, 0x35, 0xdc, 0xfb, 0x6d, 0xb8, 0xf7, 0xf1, 0x90, 0x66,
-	0x76, 0xfe, 0x39, 0x13, 0xb1, 0x92, 0x81, 0x45, 0xad, 0xa3, 0x47, 0xa9, 0x0a, 0xac, 0x02, 0x37,
-	0xf9, 0x22, 0x0c, 0x96, 0x6e, 0xf7, 0xaa, 0x44, 0x33, 0xf3, 0xdd, 0xf6, 0x4f, 0xff, 0x01, 0x00,
-	0x00, 0xff, 0xff, 0x3c, 0x80, 0xf5, 0xe2, 0x8f, 0x01, 0x00, 0x00,
+	// 365 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x92, 0xb1, 0x6e, 0xea, 0x30,
+	0x14, 0x86, 0xf1, 0x05, 0x02, 0x39, 0x48, 0x57, 0x57, 0xbe, 0x2d, 0xb5, 0x22, 0x94, 0x56, 0x99,
+	0xda, 0xa1, 0x89, 0x44, 0xdf, 0xa0, 0x54, 0xea, 0x94, 0x85, 0xb1, 0x5b, 0x48, 0xac, 0x10, 0x29,
+	0xb6, 0x23, 0xc7, 0x20, 0x78, 0x8b, 0xce, 0x7d, 0x97, 0xee, 0x1d, 0x19, 0x3b, 0x56, 0xf0, 0x1a,
+	0x1d, 0x2a, 0x1c, 0x12, 0x42, 0xd5, 0x6c, 0xdd, 0xf2, 0xff, 0x5f, 0x74, 0x74, 0xce, 0xef, 0x1f,
+	0xfe, 0x85, 0x42, 0x52, 0x8f, 0xa5, 0x9e, 0x5a, 0xb9, 0x99, 0x14, 0x4a, 0x60, 0xd8, 0x3b, 0xee,
+	0x72, 0xec, 0xb2, 0xd4, 0x79, 0x45, 0x30, 0xf0, 0xf3, 0xf8, 0x91, 0x72, 0x2a, 0x03, 0x45, 0x31,
+	0x81, 0x5e, 0x28, 0x69, 0xa0, 0x84, 0x24, 0xe8, 0x0a, 0x5d, 0x9b, 0xd3, 0x52, 0x62, 0x0b, 0xfa,
+	0x4c, 0x44, 0x41, 0x9a, 0xa8, 0x35, 0xf9, 0xa3, 0x51, 0xa5, 0xf1, 0x19, 0x74, 0x99, 0x88, 0x68,
+	0x4a, 0xda, 0x1a, 0x14, 0x02, 0x0f, 0xc1, 0xc8, 0xa4, 0x60, 0x99, 0x22, 0x1d, 0x6d, 0x1f, 0x14,
+	0x1e, 0x81, 0xc9, 0x69, 0x7c, 0x40, 0x5d, 0x8d, 0x8e, 0x06, 0xc6, 0xd0, 0xc9, 0x29, 0x8d, 0x88,
+	0xa1, 0x81, 0xfe, 0xde, 0x6f, 0xc5, 0x82, 0x70, 0x9e, 0x70, 0x4a, 0x7a, 0xc5, 0x56, 0x07, 0xe9,
+	0x9c, 0xc3, 0xff, 0xda, 0xfa, 0x53, 0x9a, 0x67, 0x82, 0xe7, 0xd4, 0xf9, 0x44, 0xf0, 0xd7, 0xcf,
+	0xe3, 0x89, 0xe0, 0x51, 0xa2, 0x12, 0xc1, 0x83, 0xf4, 0x57, 0x2f, 0x1b, 0x81, 0x19, 0x2a, 0x99,
+	0x16, 0xa4, 0x38, 0xee, 0x68, 0x94, 0x34, 0xe1, 0xd9, 0xa2, 0xba, 0xaf, 0x32, 0x6a, 0xa9, 0x18,
+	0xcd, 0xa9, 0xf4, 0x9a, 0x52, 0xe9, 0xff, 0x9c, 0x8a, 0x79, 0x9a, 0x0a, 0x81, 0xe1, 0xe9, 0xf5,
+	0x65, 0x30, 0xe3, 0x17, 0x04, 0x6d, 0x3f, 0x8f, 0xf1, 0x03, 0xf4, 0xab, 0x37, 0xbf, 0x70, 0x8f,
+	0x85, 0x70, 0x6b, 0x69, 0x5a, 0x97, 0x0d, 0xa0, 0x9c, 0x86, 0x7d, 0x18, 0xd4, 0x23, 0xb6, 0xbe,
+	0xfd, 0x5f, 0x63, 0x96, 0xd3, 0xcc, 0xca, 0x71, 0xf7, 0x93, 0xb7, 0xad, 0x8d, 0x36, 0x5b, 0x1b,
+	0x7d, 0x6c, 0x6d, 0xf4, 0xbc, 0xb3, 0x5b, 0x9b, 0x9d, 0xdd, 0x7a, 0xdf, 0xd9, 0xad, 0xa7, 0x9b,
+	0x38, 0x51, 0xf3, 0xc5, 0xcc, 0x0d, 0x05, 0xf3, 0x14, 0x95, 0x32, 0xb8, 0x65, 0x82, 0xd3, 0xb5,
+	0xa7, 0xbb, 0xbd, 0x1c, 0x7b, 0x2b, 0x5d, 0xf0, 0x75, 0x46, 0xf3, 0x99, 0xa1, 0x4b, 0x7e, 0xf7,
+	0x15, 0x00, 0x00, 0xff, 0xff, 0x3b, 0xfc, 0x6c, 0xea, 0xf8, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -197,6 +348,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
 	Generate(ctx context.Context, in *MsgGenerate, opts ...grpc.CallOption) (*MsgGenerateResponse, error)
+	Conditional(ctx context.Context, in *MsgConditional, opts ...grpc.CallOption) (*MsgConditionalResponse, error)
 }
 
 type msgClient struct {
@@ -216,9 +368,19 @@ func (c *msgClient) Generate(ctx context.Context, in *MsgGenerate, opts ...grpc.
 	return out, nil
 }
 
+func (c *msgClient) Conditional(ctx context.Context, in *MsgConditional, opts ...grpc.CallOption) (*MsgConditionalResponse, error) {
+	out := new(MsgConditionalResponse)
+	err := c.cc.Invoke(ctx, "/core.v2.ml.Msg/Conditional", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	Generate(context.Context, *MsgGenerate) (*MsgGenerateResponse, error)
+	Conditional(context.Context, *MsgConditional) (*MsgConditionalResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -227,6 +389,9 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) Generate(ctx context.Context, req *MsgGenerate) (*MsgGenerateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Generate not implemented")
+}
+func (*UnimplementedMsgServer) Conditional(ctx context.Context, req *MsgConditional) (*MsgConditionalResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Conditional not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -251,6 +416,24 @@ func _Msg_Generate_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_Conditional_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgConditional)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).Conditional(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/core.v2.ml.Msg/Conditional",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).Conditional(ctx, req.(*MsgConditional))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "core.v2.ml.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -258,6 +441,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Generate",
 			Handler:    _Msg_Generate_Handler,
+		},
+		{
+			MethodName: "Conditional",
+			Handler:    _Msg_Conditional_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -359,6 +546,115 @@ func (m *MsgGenerateResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgConditional) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgConditional) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgConditional) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Machine) > 0 {
+		i -= len(m.Machine)
+		copy(dAtA[i:], m.Machine)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Machine)))
+		i--
+		dAtA[i] = 0x4a
+	}
+	if len(m.Seed) > 0 {
+		i -= len(m.Seed)
+		copy(dAtA[i:], m.Seed)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Seed)))
+		i--
+		dAtA[i] = 0x42
+	}
+	if len(m.Negprompt) > 0 {
+		i -= len(m.Negprompt)
+		copy(dAtA[i:], m.Negprompt)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Negprompt)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if len(m.Prompt) > 0 {
+		i -= len(m.Prompt)
+		copy(dAtA[i:], m.Prompt)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Prompt)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.Ctrlinput) > 0 {
+		i -= len(m.Ctrlinput)
+		copy(dAtA[i:], m.Ctrlinput)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Ctrlinput)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.Ctrlmodel) > 0 {
+		i -= len(m.Ctrlmodel)
+		copy(dAtA[i:], m.Ctrlmodel)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Ctrlmodel)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.Model) > 0 {
+		i -= len(m.Model)
+		copy(dAtA[i:], m.Model)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Model)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Modality) > 0 {
+		i -= len(m.Modality)
+		copy(dAtA[i:], m.Modality)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Modality)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgConditionalResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgConditionalResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgConditionalResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -408,6 +704,60 @@ func (m *MsgGenerate) Size() (n int) {
 }
 
 func (m *MsgGenerateResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgConditional) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Modality)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Model)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Ctrlmodel)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Ctrlinput)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Prompt)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Negprompt)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Seed)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Machine)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgConditionalResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -723,6 +1073,394 @@ func (m *MsgGenerateResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgGenerateResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgConditional) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgConditional: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgConditional: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Modality", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Modality = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Model", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Model = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Ctrlmodel", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Ctrlmodel = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Ctrlinput", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Ctrlinput = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Prompt", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Prompt = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Negprompt", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Negprompt = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 8:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Seed", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Seed = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 9:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Machine", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Machine = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgConditionalResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgConditionalResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgConditionalResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
